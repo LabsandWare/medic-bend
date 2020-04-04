@@ -1,0 +1,168 @@
+{
+	"info": {
+		"_postman_id": "847465c9-19ab-4727-9c30-a524148ca4b5",
+		"name": "Edokita",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "http://localhost:8000/api/v1/signup/doctor",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "email",
+							"value": "few@wale.com",
+							"type": "text"
+						},
+						{
+							"key": "firstname",
+							"value": "Dudu",
+							"type": "text"
+						},
+						{
+							"key": "lastname",
+							"value": "Fayode",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "123456",
+							"type": "text"
+						},
+						{
+							"key": "password_confirmation",
+							"value": "123456",
+							"type": "text"
+						},
+						{
+							"key": "username",
+							"value": "dude",
+							"type": "text"
+						},
+						{
+							"key": "gender",
+							"value": "female",
+							"type": "text"
+						},
+						{
+							"key": "speciality",
+							"value": "Obstetrician",
+							"type": "text"
+						},
+						{
+							"key": "affliated_hospital",
+							"value": "St. Bernards",
+							"type": "text"
+						},
+						{
+							"key": "why",
+							"value": "To help humanity is my passion",
+							"type": "text"
+						},
+						{
+							"key": "photo",
+							"type": "file",
+							"src": "/home/labsandware/Pictures/THOMAS SANKARA.jpg"
+						},
+						{
+							"key": "country",
+							"value": "Nigeria",
+							"type": "text"
+						},
+						{
+							"key": "city",
+							"value": "Zaria",
+							"type": "text"
+						},
+						{
+							"key": "address",
+							"value": "13, Samaru",
+							"type": "text"
+						},
+						{
+							"key": "license_expiry_date",
+							"value": "23/June/2023",
+							"type": "text"
+						},
+						{
+							"key": "license_issue_date",
+							"value": "13/April/2019",
+							"type": "text"
+						},
+						{
+							"key": "phone",
+							"value": "080656363",
+							"type": "text"
+						},
+						{
+							"key": "state",
+							"value": "Kaduna",
+							"type": "text"
+						},
+						{
+							"key": "license_id",
+							"value": "12WEEKS",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/v1/signup/doctor",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"v1",
+						"signup",
+						"doctor"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8000/api/v1/login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "email",
+							"value": "dew@wale.com",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "123456",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/v1/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"v1",
+						"login"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
