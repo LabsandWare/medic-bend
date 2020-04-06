@@ -4,14 +4,12 @@ namespace App\Http\Controllers\Auth;
 
 use Cloudder;
 use App\Models\User;
-use App\Models\Address;
-use App\Models\Doctor;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 
-class DoctorRegisterCtrl extends Controller
+class MobileRegisterCtrl extends Controller
 {
 
 
@@ -36,7 +34,7 @@ class DoctorRegisterCtrl extends Controller
         return Validator::make($data, [
             'username' => 'required|string|username|max:255|unique:users',
             'email' => 'required|string|email|max:255|unique:users',
-            'password' => 'required|string|min:6|confirmed',
+            'password' => 'required|string|min:6',
         ]);
     }
 
@@ -65,35 +63,6 @@ class DoctorRegisterCtrl extends Controller
         
 
         if ($user) {
-
-        		$user->address()->save(new Address([
-        			'address'	=> $request->input('address'),
-	            'city'	=> $request->input('city'),
-	            'state'	=> $request->input('state'),
-	            'country'	=> $request->input('country'),
-	            'phone'	=> $request->input('phone'),
-			      ]));
-
-        		if ($request->hasFile('photo')) {
-
-		            //return 'Good From Here';
-		            Cloudder::upload($request->file('photo'));
-		            $cloundary_upload = Cloudder::getResult();
-		            
-		            $doctor = new Doctor([
-					      	'username' => $request->input('username'),
-					      	'gender' => $request->input('gender'),
-					      	'speciality' => $request->input('speciality'),
-						      'license_id'	=> $request->input('license_id'),
-				          'license_issue_date'  => $request->input('license_issue_date'),
-				          'license_expiry_date'  => $request->input('license_expiry_date'),
-					      	'affliated_hospital' => $request->input('affliated_hospital'),
-						      'why' => $request->input('why'),
-						      'photo' => $cloundary_upload['url']
-					      ]);
-
-					      $user->doctors()->save($doctor);
-		        }
             
           return response()->json([
               'status' => 'Success',

@@ -19,7 +19,6 @@ class CreateDoctorsTable extends Migration
             $table->string('speciality');
             $table->string('affliated_hospital');
             $table->text('why');
-            $table->text('username');
             $table->string('photo');
             $table->string('license_id');
             $table->string('license_issue_date');

@@ -21,11 +21,12 @@ Route::prefix('v1')->group( function ()
     Route::post('signup/doctor','Auth\DoctorRegisterCtrl@create');
     Route::post('signup/admin','Auth\RegisterController@create');
     Route::post('signup/','Auth\RegisterCtrl@create');
+    Route::post('mobile/signup/','Auth\MobileRegisterCtrl@create');
 
     Route::middleware('auth:api')->group( function ()
     {
         # code...
-        
+        Route::get('user', 'UsersCtrl@index');
         Route::post('logout', 'Auth\LoginController@logout');
 
     });
