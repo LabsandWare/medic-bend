@@ -32,7 +32,7 @@ class MobileRegisterCtrl extends Controller
     protected function validator(array $data)
     {   
         return Validator::make($data, [
-            'username' => 'required|string|username|max:255|unique:users',
+            'username' => 'required|string|max:255|unique:users',
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:6',
         ]);
@@ -52,13 +52,16 @@ class MobileRegisterCtrl extends Controller
             'message' => $validator->messages()
           ]);
         }
+
+        $uuid = (string) Str::uuid();
          
         $user = User::create([
         	'firstname' => $request->firstname,
         	'lastname' => $request->lastname,
           'email' => $request->email,
           'username' => $request->username,
-          'password' => Hash::make($request->password)
+          'password' => Hash::make($request->password),
+          'uuid' => $uuid
         ]);
         
 

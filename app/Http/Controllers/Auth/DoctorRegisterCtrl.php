@@ -14,7 +14,6 @@ use Illuminate\Support\Facades\Validator;
 class DoctorRegisterCtrl extends Controller
 {
 
-
 		/**
      * Create a new controller instance.
      *
@@ -34,7 +33,7 @@ class DoctorRegisterCtrl extends Controller
     protected function validator(array $data)
     {   
         return Validator::make($data, [
-            'username' => 'required|string|username|max:255|unique:users',
+            'username' => 'required|string|max:255|unique:users',
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:6|confirmed',
         ]);
@@ -54,13 +53,16 @@ class DoctorRegisterCtrl extends Controller
             'message' => $validator->messages()
           ]);
         }
+
+        $uuid = (string) Str::uuid();
          
         $user = User::create([
+          'username' => $request->username,
         	'firstname' => $request->firstname,
         	'lastname' => $request->lastname,
           'email' => $request->email,
-          'username' => $request->username,
-          'password' => Hash::make($request->password)
+          'password' => Hash::make($request->password),
+          'uuid' => $uuid
         ]);
         
 
@@ -81,7 +83,6 @@ class DoctorRegisterCtrl extends Controller
 		            $cloundary_upload = Cloudder::getResult();
 		            
 		            $doctor = new Doctor([
-					      	'username' => $request->input('username'),
 					      	'gender' => $request->input('gender'),
 					      	'speciality' => $request->input('speciality'),
 						      'license_id'	=> $request->input('license_id'),

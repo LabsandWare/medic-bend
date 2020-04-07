@@ -16,7 +16,6 @@ class CreatePharmacyTable extends Migration
         Schema::create('pharmacy', function (Blueprint $table) {
             $table->id();
             $table->string('pharmacy_name');
-            $table->string('password');
             $table->text('why');
             $table->string('photo');
             $table->unsignedBigInteger('user_id')->nullable();

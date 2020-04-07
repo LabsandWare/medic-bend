@@ -245,6 +245,63 @@
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "http://localhost:8000/api/v1/mobile/signup",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "email",
+							"value": "dairy@queen.com",
+							"type": "text"
+						},
+						{
+							"key": "firstname",
+							"value": "Dudu",
+							"type": "text"
+						},
+						{
+							"key": "lastname",
+							"value": "Fayode",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "123456",
+							"type": "text"
+						},
+						{
+							"key": "password_confirmation",
+							"value": "123456",
+							"type": "text"
+						},
+						{
+							"key": "username",
+							"value": "mullan",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/v1/mobile/signup",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"v1",
+						"mobile",
+						"signup"
+					]
+				}
+			},
+			"response": []
 		}
 	],
 	"protocolProfileBehavior": {}
