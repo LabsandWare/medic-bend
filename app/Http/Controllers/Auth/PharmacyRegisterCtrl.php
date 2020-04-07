@@ -64,6 +64,7 @@ class PharmacyRegisterCtrl extends Controller
         	'lastname' => $request->lastname,
           'email' => $request->email,
           'password' => Hash::make($request->password),
+          'role' => 'pharmacy',
           'uuid' => $uuid
         ]);
         

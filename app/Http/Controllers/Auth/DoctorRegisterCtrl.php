@@ -62,6 +62,7 @@ class DoctorRegisterCtrl extends Controller
         	'lastname' => $request->lastname,
           'email' => $request->email,
           'password' => Hash::make($request->password),
+          'role' => 'doctor',
           'uuid' => $uuid
         ]);
         
