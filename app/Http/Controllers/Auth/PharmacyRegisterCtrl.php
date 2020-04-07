@@ -6,6 +6,7 @@ use Cloudder;
 use App\Models\User;
 use App\Models\Address;
 use App\Models\Pharmacy;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
