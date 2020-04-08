@@ -20,6 +20,7 @@ class CreateDoctorsTable extends Migration
             $table->string('affliated_hospital');
             $table->text('why');
             $table->string('photo');
+            $table->enum('status',['decline', 'accept'])->default('decline');
             $table->string('license_id');
             $table->string('license_issue_date');
             $table->string('license_expiry_date');

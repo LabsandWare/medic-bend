@@ -34,8 +34,12 @@ Route::prefix('v1')->group( function ()
         Route::post('updatepatient', 'PatientCtrl@update');
         Route::get('doctor', 'UsersCtrl@index');
         Route::post('updatedoctor', 'DoctorCtrl@update');
-        Route::get('Admin', 'AdminCtrl@index');
-        Route::post('updatedoctor', 'AdminCtrl@update');
+        Route::get('list/pharmacy', 'AdminCtrl@pharmacyList');
+        Route::get('list/doctor', 'AdminCtrl@doctorList');
+        Route::get('list/patient', 'AdminCtrl@patientList');
+        Route::get('list/lab', 'AdminCtrl@labList');
+        Route::get('list/hospital', 'AdminCtrl@hospitalList');
+        Route::post('updatedoctor/{id}', 'AdminCtrl@updateDoctorStatus');
         Route::post('logout', 'Auth\LoginController@logout');
 
     });
