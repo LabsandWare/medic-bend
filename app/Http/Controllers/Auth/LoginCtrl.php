@@ -33,21 +33,32 @@ class LoginCtrl extends Controller
         'password' => 'required'
       ]);
 
-      $user = User::where('email', $request->email)->first();
+      $user = User::where('email', $request->email)
+                  ->first();
 
-      if (Hash::check($request->password, $user->password)) {
+      if ($user) {
         # code...
-        $token = $user->createToken('api_key')->accessToken;
+        if (Hash::check($request->password, $user->password)) {
+          # code...
+          $token = $user->createToken('api_key')->accessToken;
 
-        return response()->json([
-          'status' => 'Success',
-          'apikey' => $token
-        ]);
-      } else {
-        return response()->json([
-          'status' => 'fail'
-        ], 401);
+          return response()->json([
+            'status' => 'Success',
+            'apikey' => $token,
+            'user_type' => $user->role
+          ]);
+        } else {
+          return response()->json([
+            'status' => 'fail'
+          ], 401);
+        }
       }
+      else {
+          return response()->json([
+            'status' => 'fail',
+            'message' => 'User not found'
+          ], 401);
+        }
 
     }
 

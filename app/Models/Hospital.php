@@ -44,4 +44,12 @@ class Drugs extends Model
         return $this->belongsTo('App\Models\Pharmacy');
     }
 
+    /**
+     * Get the user that are doctor.
+     */
+    public function user()
+    {
+        return $this->belongsTo('App\Models\User', 'foreign_key');
+    }
+
 }

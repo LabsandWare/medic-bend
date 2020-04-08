@@ -14,6 +14,14 @@ class Pharmacy extends Model
         return $this->belongsToMany('App\Models\Drug');
     }
 
+    /**
+     * Get the patients for doctor.
+     */
+    public function patients()
+    {
+        return $this->hasMany('App\Models\Patients');
+    }
+
 
     /**
      * Get the user that are pharmacy.

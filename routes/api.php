@@ -17,11 +17,14 @@ use Illuminate\Support\Facades\Route;
 Route::prefix('v1')->group( function ()
 {
     # code...
-    Route::post('login/','Auth\LoginCtrl@login');
+    Route::post('login','Auth\LoginCtrl@login');
     Route::post('signup/doctor','Auth\DoctorRegisterCtrl@create');
-    Route::post('signup/admin','Auth\RegisterController@create');
-    Route::post('signup/','Auth\RegisterCtrl@create');
-    Route::post('mobile/signup/','Auth\MobileRegisterCtrl@create');
+    Route::post('signup/lab','Auth\LabRegisterCtrl@create');
+    Route::post('signup/pharmacy','Auth\PharmacyRegisterCtrl@create');
+    Route::post('signup/hospital','Auth\HospitalRegisterCtrl@create');
+    Route::post('signup/admin','Auth\AdminController@create');
+    Route::post('signup','Auth\RegisterCtrl@create');
+    Route::post('mobile/signup','Auth\MobileRegisterCtrl@create');
 
     Route::middleware('auth:api')->group( function ()
     {

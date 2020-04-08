@@ -16,7 +16,6 @@ class CreateHospitalsTable extends Migration
         Schema::create('hospitals', function (Blueprint $table) {
             $table->id();
             $table->string('hospital_name');
-            $table->string('password');
             $table->text('why');
             $table->string('photo');
             $table->unsignedBigInteger('user_id')->nullable();

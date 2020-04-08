@@ -2,17 +2,21 @@
 
 namespace App\Http\Controllers\Auth;
 
+use Cloudder;
 use App\Models\User;
 use App\Models\Address;
+use App\Models\Lab;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
-use Illuminate\Support\Str;
 
-class AdminRegisterCtrl extends Controller
+
+class LabRegisterCtrl extends Controller
 {
-    
+
+
 		/**
      * Create a new controller instance.
      *
@@ -52,18 +56,17 @@ class AdminRegisterCtrl extends Controller
             'message' => $validator->messages()
           ]);
         }
-
+        
         $uuid = (string) Str::uuid();
-
-
+        
         $user = User::create([
           'username' => $request->username,
         	'firstname' => $request->firstname,
         	'lastname' => $request->lastname,
           'email' => $request->email,
-          'uuid' => $uuid,
-          'role' => 'admin',
-          'password' => Hash::make($request->password)
+          'password' => Hash::make($request->password),
+          'role' => 'lab',
+          'uuid' => $uuid
         ]);
         
         if ($user) {
@@ -75,9 +78,23 @@ class AdminRegisterCtrl extends Controller
 	            'country'	=> $request->input('country'),
 	            'phone'	=> $request->input('phone'),
 			      ]));
+
+        		if ($request->hasFile('photo')) {
+
+		            //return 'Good From Here';
+		            Cloudder::upload($request->file('photo'));
+		            $cloundary_upload = Cloudder::getResult();
+		            
+		            $lab = new Lab([
+					      	'lab_name' => $request->input('lab_name'),
+						      'why' => $request->input('why'),
+						      'photo' => $cloundary_upload['url']
+					      ]);
+
+					      $user->labs()->save($lab);
+		        }
             
-            
-	          return response()->json([
+          return response()->json([
               'status' => 'Success',
               'message' => 'Kindly Login',
             ]);
@@ -90,5 +107,5 @@ class AdminRegisterCtrl extends Controller
         }
 
     }
-
+		
 }
