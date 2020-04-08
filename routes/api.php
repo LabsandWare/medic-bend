@@ -30,6 +30,12 @@ Route::prefix('v1')->group( function ()
     {
         # code...
         Route::get('user', 'UsersCtrl@index');
+        Route::get('patient', 'PatientCtrl@index');
+        Route::post('updatepatient', 'PatientCtrl@update');
+        Route::get('doctor', 'UsersCtrl@index');
+        Route::post('updatedoctor', 'DoctorCtrl@update');
+        Route::get('Admin', 'AdminCtrl@index');
+        Route::post('updatedoctor', 'AdminCtrl@update');
         Route::post('logout', 'Auth\LoginController@logout');
 
     });
